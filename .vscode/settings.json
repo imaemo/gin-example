@@ -1,0 +1,9 @@
+{
+    "go.formatTool": "goimports",
+    "terminal.integrated.env.windows": {
+        "GOPROXY": "https://gocenter.io"
+    },
+    "terminal.integrated.env.linux": {
+        "GOPROXY": "https://gocenter.io"
+    }
+}

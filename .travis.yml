@@ -1,0 +1,21 @@
+language: go
+
+services: 
+  - docker
+
+go: 
+  - 1.12.5
+
+notifications:
+  email: false
+
+script:
+  - |
+    (
+      docker . -t gin-example -f ./docker/Dockerfile
+    )
+
+after_script:
+  - docker images
+  - docker run gin-example
+  - curl http://127.0.0.1:8080
