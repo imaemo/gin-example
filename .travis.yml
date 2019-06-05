@@ -15,7 +15,7 @@ script:
       tag=$(git rev-parse --short HEAD)
       docker build . -t gin-example:${tag} -f ./docker/Dockerfile
 
-      docker run -d -p 80:8080 gin-example
+      docker run -d -p 80:8080 gin-example:${tag}
       curl --fail http://127.0.0.1/ping
         
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
