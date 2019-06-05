@@ -16,9 +16,8 @@ script:
       docker build . -t gin-example:${tag} -f ./docker/Dockerfile
       docker images
       docker run -d -p 80:8080 gin-example:${tag}
-      
+
       if $(curl --fail http://127.0.0.1/ping) ;then
-      do 
         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         docker tag gin-example:${tag} jolla20i8/gin-example:${tag}
         docker tag jolla20i8/gin-example:${tag} jolla20i8/gin-example:latest
