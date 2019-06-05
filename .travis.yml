@@ -13,9 +13,7 @@ script:
   - |
     (
       docker build . -t gin-example -f ./docker/Dockerfile
+      docker images
+      docker run -d -p 80:8080 gin-example
+      curl -v http://127.0.0.1/pin
     )
-
-after_script:
-  - docker images
-  - docker run -d gin-example
-  - curl http://127.0.0.1:8080
