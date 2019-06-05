@@ -17,5 +17,5 @@ script:
 
 after_script:
   - docker images
-  - docker run gin-example
+  - docker run -d gin-example
   - curl http://127.0.0.1:8080
