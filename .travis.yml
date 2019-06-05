@@ -12,8 +12,16 @@ notifications:
 script:
   - |
     (
-      docker build . -t gin-example -f ./docker/Dockerfile
-      docker images
+      tag=$(git rev-parse --short HEAD)
+      docker build . -t gin-example:${tag} -f ./docker/Dockerfile
+
       docker run -d -p 80:8080 gin-example
       curl --fail http://127.0.0.1/ping
+        
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      docker tag gin-example:${tag} jolla20i8/gin-example:${tag}
+      docker tag jolla20i8/gin-example:${tag} jolla20i8/gin-example:latest
+      docker push jolla20i8/gin-example:${tag}
+      docker push jolla20i8/gin-example:latest
+
     )
