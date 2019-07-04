@@ -16,7 +16,7 @@ spec:
       - name: gin-example
         image: jolla20i8/gin-example:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8888
         resources:
           requests:
             memory: "10Mi"
@@ -39,10 +39,10 @@ spec:
   ports:
   - name: http
     port: 443
-    targetPort: 8080
+    targetPort: 8888
     protocol: TCP
   - name: https
     port: 80
-    targetPort: 8080
+    targetPort: 8888
   selector:
     app: gin-example

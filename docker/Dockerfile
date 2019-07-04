@@ -10,6 +10,6 @@ FROM golang:1.12.5-alpine3.9
 
 WORKDIR /go
 COPY --from=builder /api/app .
-EXPOSE 8080
+EXPOSE 8888
 
 ENTRYPOINT [ "./app" ]
