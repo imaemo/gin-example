@@ -1,1 +1,4 @@
 vendor
+log
+main.exe
+*.log
