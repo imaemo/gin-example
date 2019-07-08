@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  gin-example:
+    image: jolla20i8/gin-example:latest
+    ports:
+      - "8888:8888"
+    links:
+    - fluentd
+    volumes:
+    - data:/go
+
+  fluentd:
+    image: roffe/kube-gelf:v1.1
+    environment:
+    - GELF_HOST=10.0.2.15
+    - GELF_PORT=12201
+    - GELF_PROTOCOL=tcp
+    volumes:
+    - data:/logs/
+    - ./fluentd.conf:/fluentd/etc/fluent.conf:ro
+volumes:
+  data:
